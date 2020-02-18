@@ -115,7 +115,7 @@ class STXClient(object):
         hash_ = "%s_%s" % (self._login, self._password)
         if six.PY3:
             hash_ = hash_.encode('utf-8')
-        hash_ = hashlib.md5(hash_)  # nosec
+        hash_ = hashlib.sha1(hash_)  # nosec
         digest = hash_.hexdigest()
 
         url = self._base_url + "/login/" + digest

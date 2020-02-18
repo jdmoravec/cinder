@@ -770,7 +770,7 @@ class NexentaNfsDriver(nfs.NfsDriver):
         share = self._get_volume_share(volume)
         if isinstance(share, six.text_type):
             share = share.encode('utf-8')
-        path = hashlib.md5(share).hexdigest()
+        path = hashlib.sha1(share).hexdigest()
         return os.path.join(self.mount_point_base, path)
 
     def local_path(self, volume):

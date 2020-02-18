@@ -288,7 +288,7 @@ class PowerMaxUtils(object):
         """
         if host_name and len(host_name) > 16:
             host_name = host_name.lower()
-            m = hashlib.md5()
+            m = hashlib.sha1()
             m.update(host_name.encode('utf-8'))
             uuid = m.hexdigest()
             new_name = ("%(host)s%(uuid)s"
@@ -305,7 +305,7 @@ class PowerMaxUtils(object):
         """
         if portgroup_name and len(portgroup_name) > 12:
             portgroup_name = portgroup_name.lower()
-            m = hashlib.md5()
+            m = hashlib.sha1()
             m.update(portgroup_name.encode('utf-8'))
             uuid = m.hexdigest()
             new_name = ("%(pg)s%(uuid)s"

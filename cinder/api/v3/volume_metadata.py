@@ -39,7 +39,7 @@ class Controller(volume_meta_v2.Controller):
         data = jsonutils.dumps({"metadata": metadata})
         if six.PY3:
             data = data.encode('utf-8')
-        checksum = hashlib.md5(data).hexdigest()
+        checksum = hashlib.sha1(data).hexdigest()
         return checksum in req.if_match.etags
 
     @wsgi.extends
@@ -51,7 +51,7 @@ class Controller(volume_meta_v2.Controller):
             if six.PY3:
                 data = data.encode('utf-8')
             resp = webob.Response()
-            resp.headers['Etag'] = hashlib.md5(data).hexdigest()
+            resp.headers['Etag'] = hashlib.sha1(data).hexdigest()
             resp.body = data
             return resp
         return metadata

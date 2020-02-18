@@ -35,7 +35,7 @@ LOG = logging.getLogger(__name__)
 
 
 def encode_name(name):
-    encoded_name = hashlib.md5(name.encode('utf-8')).hexdigest()
+    encoded_name = hashlib.sha1(name.encode('utf-8')).hexdigest()
     prefix = name.split('-')[0] + '-'
     postfix = encoded_name[:constants.MAX_NAME_LENGTH - len(prefix)]
     return prefix + postfix
@@ -53,7 +53,7 @@ def old_encode_name(name):
 
 def encode_host_name(name):
     if name and len(name) > constants.MAX_NAME_LENGTH:
-        encoded_name = hashlib.md5(name.encode('utf-8')).hexdigest()
+        encoded_name = hashlib.sha1(name.encode('utf-8')).hexdigest()
         return encoded_name[:constants.MAX_NAME_LENGTH]
     return name
 

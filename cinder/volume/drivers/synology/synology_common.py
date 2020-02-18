@@ -116,7 +116,7 @@ class AESCipher(object):
         d = d_i = b''
         while len(d) < key_length + iv_length:
             md5_str = d_i + password + salt
-            d_i = hashlib.md5(md5_str).digest()
+            d_i = hashlib.sha1(md5_str).digest()
             d += d_i
         return d[:key_length], d[key_length:key_length + iv_length]
 

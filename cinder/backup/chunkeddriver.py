@@ -373,7 +373,7 @@ class ChunkedBackupDriver(driver.BackupDriver):
                 container, object_name, extra_metadata=extra_metadata
         ) as writer:
             writer.write(output_data)
-        md5 = eventlet.tpool.execute(hashlib.md5, data).hexdigest()
+        md5 = eventlet.tpool.execute(hashlib.sha1, data).hexdigest()
         obj[object_name]['md5'] = md5
         LOG.debug('backup MD5 for %(object_name)s: %(md5)s',
                   {'object_name': object_name, 'md5': md5})

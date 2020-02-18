@@ -880,7 +880,7 @@ class NetAppCmodeNfsDriverTestCase(test.TestCase):
         drv = self.driver
         cinder_mount_point_base = '/opt/stack/data/cinder/mnt/'
         # To get the cinder mount point directory, we use:
-        mount_dir = hashlib.md5(
+        mount_dir = hashlib.sha1(
             '203.0.113.122:/cinder-flexvol1'.encode('utf-8')).hexdigest()
         cinder_mount_point = cinder_mount_point_base + mount_dir
         destination_copied_file = (

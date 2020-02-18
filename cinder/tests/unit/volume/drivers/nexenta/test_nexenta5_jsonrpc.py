@@ -1187,7 +1187,7 @@ class TestNefProxy(test.TestCase):
         path = '%s:%s' % (guid, self.proxy.path)
         if isinstance(path, six.text_type):
             path = path.encode('utf-8')
-        expected = hashlib.md5(path).hexdigest()
+        expected = hashlib.sha1(path).hexdigest()
         self.assertEqual(expected, self.proxy.lock)
 
     def test_url(self):

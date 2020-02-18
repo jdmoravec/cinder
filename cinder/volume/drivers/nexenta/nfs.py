@@ -613,7 +613,7 @@ class NexentaNfsDriver(nfs.NfsDriver):  # pylint: disable=R0921
         """
         nfs_share = nfs_share.encode('utf-8')
         return os.path.join(self.configuration.nexenta_mount_point_base,
-                            hashlib.md5(nfs_share).hexdigest())
+                            hashlib.sha1(nfs_share).hexdigest())
 
     def remote_path(self, volume):
         """Get volume path (mounted remotely fs path) for given volume.

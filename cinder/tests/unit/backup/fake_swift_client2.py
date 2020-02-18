@@ -78,7 +78,7 @@ class FakeSwiftConnection2(object):
         object_path = tempfile.gettempdir() + '/' + container + '/' + name
         with open(object_path, 'wb') as object_file:
             object_file.write(reader.read())
-        return hashlib.md5(reader.read()).hexdigest()
+        return hashlib.sha1(reader.read()).hexdigest()
 
     def delete_object(self, container, name):
         pass

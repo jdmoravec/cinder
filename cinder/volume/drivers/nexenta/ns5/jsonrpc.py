@@ -601,7 +601,7 @@ class NefProxy(object):
         path = '%s:%s' % (guid, self.path)
         if isinstance(path, six.text_type):
             path = path.encode('utf-8')
-        self.lock = hashlib.md5(path).hexdigest()
+        self.lock = hashlib.sha1(path).hexdigest()
 
     def url(self, path):
         netloc = '%s:%d' % (self.host, int(self.port))

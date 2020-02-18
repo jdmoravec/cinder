@@ -1102,7 +1102,7 @@ class FJDXCommon(object):
             LOG.error(msg)
             raise exception.VolumeBackendAPIException(data=msg)
 
-        m = hashlib.md5()
+        m = hashlib.sha1()
         m.update(id_code.encode('utf-8'))
 
         # pylint: disable=E1121

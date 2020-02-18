@@ -320,7 +320,7 @@ class GoogleObjectWriter(object):
             body={},
             media_body=media).execute(num_retries=self.num_retries)
         etag = resp['md5Hash']
-        md5 = hashlib.md5(self.data).digest()
+        md5 = hashlib.sha1(self.data).digest()
         if six.PY3:
             md5 = md5.encode('utf-8')
             etag = bytes(etag, 'utf-8')

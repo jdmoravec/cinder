@@ -913,7 +913,7 @@ class RemoteFSSnapDriverBase(RemoteFSDriver):
         """
         if isinstance(base_str, six.text_type):
             base_str = base_str.encode('utf-8')
-        return hashlib.md5(base_str).hexdigest()
+        return hashlib.sha1(base_str).hexdigest()
 
     def _get_mount_point_for_share(self, share):
         """Return mount point for share.

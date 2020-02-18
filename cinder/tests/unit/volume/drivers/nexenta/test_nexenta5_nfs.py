@@ -802,7 +802,7 @@ class TestNexentaNfsDriver(test.TestCase):
         result = self.drv._local_volume_dir(volume)
         get_share.assert_called_with(volume)
         share = share.encode('utf-8')
-        digest = hashlib.md5(share).hexdigest()
+        digest = hashlib.sha1(share).hexdigest()
         expected = os.path.join(self.cfg.nexenta_mount_point_base, digest)
         self.assertEqual(expected, result)
 
